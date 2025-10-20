@@ -4,12 +4,15 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import tabRoutes from "./routes/tabRoutes.js";
 
-
-
 dotenv.config();
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: ["chrome-extension://bjkppolfhjkdbjllkaegegkpmbpnjgip"], 
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type"]
+}));
 app.use(express.json());
 
 connectDB();
